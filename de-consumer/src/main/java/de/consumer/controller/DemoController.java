@@ -11,9 +11,19 @@ class DemoController {
     @Autowired
     private DemoService demoService;
 
-    @GetMapping("/hello")
-    String hello() {
-        return demoService.sayHello("Dubbo");
+    @GetMapping("/echo")
+    String echo() {
+        return demoService.echo("hello, dubbo!");
+    }
+
+    @GetMapping("/broken")
+    String broken() {
+        try {
+            demoService.broken();
+            return "ok";
+        } catch (Exception exception) {
+            return exception.getClass().getName();
+        }
     }
 
 }

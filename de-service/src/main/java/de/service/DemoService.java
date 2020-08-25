@@ -2,6 +2,8 @@ package de.service;
 
 public interface DemoService {
 
-    public String sayHello(String name);
+    public String echo(String text);
+
+    public String broken();
 
 }
