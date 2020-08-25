@@ -29,33 +29,13 @@ build-jar:
 
 build-image:
 	@mvn clean package -P LayeredJar -D version=$(version)
-
-	# CORE
-	@docker image build -t $(image_delta_core) $(CURDIR)/delta-core/target/docker-context/
-	@docker image tag $(image_delta_core) $(image_delta_core_latest)
-
-	# ACCOUNT
-	@docker image build -t $(image_delta_account) $(CURDIR)/delta-account/target/docker-context/
-	@docker image tag $(image_delta_account) $(image_delta_account_latest)
-
-	# ORDER
-	@docker image build -t $(image_delta_order) $(CURDIR)/delta-order/target/docker-context/
-	@docker image tag $(image_delta_order) $(image_delta_order_latest)
-
-	# TASK
-	@docker image build -t $(image_delta_task) $(CURDIR)/delta-task/target/docker-context/
-	@docker image tag $(image_delta_task) $(image_delta_task_latest)
+	@docker image build -t $(image-producer) $(CURDIR)/de-producer/target/docker-context/
+	@docker image build -t $(image-consumer) $(CURDIR)/de-consumer/target/docker-context/
 
 push-image: build-image
 	@echo "UGFzc3dvcmQwMSEK" | base64 -d | docker login --username=admin --password-stdin 192.168.99.115
-	@docker image push $(image_delta_core)
-	@docker image push $(image_delta_core_latest)
-	@docker image push $(image_delta_account)
-	@docker image push $(image_delta_account_latest)
-	@docker image push $(image_delta_order)
-	@docker image push $(image_delta_order_latest)
-	@docker image push $(image_delta_task)
-	@docker image push $(image_delta_task_latest)
+	@docker image push $(image-producer)
+	@docker image push $(image-consumer)
 	@docker logout 192.168.99.115 &> /dev/null
 
 clean:
