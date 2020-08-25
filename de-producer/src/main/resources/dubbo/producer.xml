@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="de-producer" version="1.0"/>
+
+    <dubbo:registry protocol="zookeeper" address="192.168.99.114:2181,192.168.99.114:2182,192.168.99.114:2183"/>
+
+    <dubbo:protocol name="dubbo" port="20880"/>
+
+    <dubbo:service interface="de.service.DemoService" ref="demoService"/>
+
+    <bean id="demoService" class="de.producer.svc.DemoServiceImpl"/>
+
+</beans>
