@@ -5,10 +5,14 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
-    <dubbo:application name="de-consumer" version="1.0"/>
+    <dubbo:application name="de-consumer" version="1.0">
+        <dubbo:parameter key="qos.enable" value="false"/>
+    </dubbo:application>
 
-    <dubbo:registry protocol="zookeeper" address="192.168.99.114:2181,192.168.99.114:2182,192.168.99.114:2183"/>
+    <dubbo:reference id="demoService" check="false" interface="de.service.DemoService"/>
 
-    <dubbo:reference id="demoService" interface="de.service.DemoService"/>
+    <beans profile="dev">
+        <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181"/>
+    </beans>
 
 </beans>

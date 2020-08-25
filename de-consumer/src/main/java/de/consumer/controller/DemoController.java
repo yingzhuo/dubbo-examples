@@ -18,12 +18,8 @@ class DemoController {
 
     @GetMapping("/broken")
     String broken() {
-        try {
-            demoService.broken();
-            return "ok";
-        } catch (Exception exception) {
-            return exception.getClass().getName();
-        }
+        demoService.broken();
+        return "ok";
     }
 
 }
