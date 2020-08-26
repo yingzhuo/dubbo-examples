@@ -27,7 +27,7 @@ metadata:
   name: producer
   namespace: de
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: producer
@@ -94,7 +94,7 @@ metadata:
   name: consumer
   namespace: de
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: consumer
