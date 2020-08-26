@@ -23,6 +23,6 @@ COPY --from=builder /opt/snapshot-dependencies/ ./
 COPY --from=builder /opt/internal-dependencies/ ./
 COPY --from=builder /opt/application/ ./
 
-ENV APP_PROFILES=fact
+ENV APP_PROFILES=k8s
 
-EXPOSE 8080 8443
+EXPOSE 8080

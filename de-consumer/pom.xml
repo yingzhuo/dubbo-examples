@@ -71,7 +71,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>de.producer.AppBoot</mainClass>
+                    <mainClass>de.consumer.AppBoot</mainClass>
                     <layers>
                         <enabled>${jar.springboot.layered.jar}</enabled>
                         <includeLayerTools>true</includeLayerTools>

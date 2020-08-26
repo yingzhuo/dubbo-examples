@@ -15,4 +15,8 @@
         <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181"/>
     </beans>
 
+    <beans profile="k8s">
+        <dubbo:registry protocol="zookeeper" address="192.168.99.114:2181,192.168.99.114:2182,192.168.99.114:2183"/>
+    </beans>
+
 </beans>
