@@ -73,7 +73,7 @@
                 <configuration>
                     <mainClass>de.consumer.AppBoot</mainClass>
                     <layers>
-                        <enabled>${jar.springboot.layered.jar}</enabled>
+                        <enabled>true</enabled>
                         <includeLayerTools>true</includeLayerTools>
                         <configuration>${project.basedir}/../layers.xml</configuration>
                     </layers>
