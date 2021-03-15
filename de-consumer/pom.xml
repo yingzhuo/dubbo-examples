@@ -75,7 +75,7 @@
                     <layers>
                         <enabled>true</enabled>
                         <includeLayerTools>true</includeLayerTools>
-                        <configuration>${project.basedir}/../layers.xml</configuration>
+                        <configuration>${project.basedir}/../springboot-layers.xml</configuration>
                     </layers>
                     <excludes>
                         <exclude>
@@ -88,37 +88,6 @@
                         </exclude>
                     </excludes>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.8</version>
-                <executions>
-                    <execution>
-                        <id>post-pkg</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target>
-                                <copy todir="${project.build.directory}/docker-context/" force="true">
-                                    <fileset dir="${project.basedir}/src/main/docker">
-                                        <include name="**/*"/>
-                                    </fileset>
-                                    <fileset dir="${project.basedir}/target/">
-                                        <include name="${project.build.finalName}.jar"/>
-                                    </fileset>
-                                </copy>
-                                <delete>
-                                    <fileset dir="${project.basedir}/target/">
-                                        <include name="*.jar*"/>
-                                    </fileset>
-                                </delete>
-                            </target>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
