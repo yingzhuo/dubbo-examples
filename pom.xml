@@ -8,7 +8,7 @@
     <artifactId>dubbo-examples</artifactId>
     <version>0.0.1</version>
     <modules>
-        <module>de-service</module>
+        <module>de-common</module>
         <module>de-producer</module>
         <module>de-consumer</module>
     </modules>
@@ -74,6 +74,11 @@
     <dependencyManagement>
         <dependencies>
             <!-- DE -->
+            <dependency>
+                <groupId>com.github.yingzhuo</groupId>
+                <artifactId>de-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.github.yingzhuo</groupId>
                 <artifactId>de-service</artifactId>
@@ -327,17 +332,6 @@
                 <artifactId>classmate</artifactId>
                 <version>1.5.1</version>
             </dependency>
-
-            <!-- Apache Dubbo  -->
-            <!--
-            <dependency>
-                <groupId>org.apache.dubbo</groupId>
-                <artifactId>dubbo-dependencies-bom</artifactId>
-                <version>2.7.8</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            -->
 
             <!-- dubbo -->
             <dependency>

@@ -9,3 +9,6 @@ dubbo:
   registry:
     protocol: "zookeeper"
     address: "127.0.0.1:2181"
+  config-center:
+    address: "127.0.0.1:2181"
+    check: false

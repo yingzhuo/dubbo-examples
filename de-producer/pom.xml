@@ -15,7 +15,7 @@
         <!-- DE -->
         <dependency>
             <groupId>com.github.yingzhuo</groupId>
-            <artifactId>de-service</artifactId>
+            <artifactId>de-common</artifactId>
         </dependency>
 
         <!-- spring-boot -->
