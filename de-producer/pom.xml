@@ -31,7 +31,7 @@
         <!-- dubbo -->
         <dependency>
             <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo</artifactId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
         </dependency>
 
         <!-- zookeeper-client -->
@@ -71,7 +71,6 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>de.producer.AppBoot</mainClass>
                     <layers>
                         <enabled>true</enabled>
                         <includeLayerTools>true</includeLayerTools>

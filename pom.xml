@@ -42,6 +42,7 @@
         <!-- common -->
         <encoding>UTF-8</encoding>
         <java.version>1.8</java.version>
+        <scala.version>2.13.5</scala.version>
 
         <!-- framework -->
         <spring.boot.version>2.4.3</spring.boot.version>
@@ -55,6 +56,20 @@
         <maven.install.skip>true</maven.install.skip>
         <maven.deploy.skip>true</maven.deploy.skip>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>apache.snapshots.https</id>
+            <name>Apache Development Snapshot Repository</name>
+            <url>https://repository.apache.org/content/repositories/snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <dependencyManagement>
         <dependencies>
@@ -313,11 +328,28 @@
                 <version>1.5.1</version>
             </dependency>
 
+            <!-- Apache Dubbo  -->
+            <!--
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-dependencies-bom</artifactId>
+                <version>2.7.8</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            -->
+
             <!-- dubbo -->
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>2.7.8</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo</artifactId>
-                <version>2.7.9</version>
+                <version>2.7.8</version>
                 <exclusions>
                     <exclusion>
                         <groupId>log4j</groupId>
@@ -441,6 +473,25 @@
         </dependencies>
     </dependencyManagement>
 
+    <dependencies>
+        <!-- scala -->
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>${scala.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-reflect</artifactId>
+            <version>${scala.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.scala-lang.modules</groupId>
+            <artifactId>scala-java8-compat_2.13</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <finalName>${project.artifactId}-${version}</finalName>
 
@@ -489,6 +540,32 @@
                             <version>1.18.18</version>
                         </path>
                     </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <version>4.4.1</version>
+                <executions>
+                    <execution>
+                        <id>scala-compile-first</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>scala-test-compile</id>
+                        <phase>process-test-resources</phase>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <sourceDir>${project.basedir}/src/main/java</sourceDir>
+                    <sourceDir>${project.basedir}/src/main/scala</sourceDir>
                 </configuration>
             </plugin>
             <plugin>

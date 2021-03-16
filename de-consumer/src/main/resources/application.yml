@@ -2,9 +2,13 @@
 # 核心配置
 # ----------------------------------------------------------------------------------------------------------------------
 spring:
+  application:
+    name: "de-consumer"
   profiles:
     active:
       - dev
+    include:
+      - dubbo
   aop:
     auto: true
   main:

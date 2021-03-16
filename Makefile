@@ -8,7 +8,7 @@ usage:
 	@echo "build-jar      : 构建Jar文件"
 	@echo "clean          : 清理"
 	@echo "version        : 变更版本号"
-	@echo "version        : 变更版本号"
+	@echo "github         : 推送源码"
 
 build-jar:
 	@mvn clean package -D"version=$(version)"
