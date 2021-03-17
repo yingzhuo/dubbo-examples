@@ -5,6 +5,8 @@ import de.service.version.Version.Default
 import org.apache.dubbo.config.annotation.DubboReference
 import org.springframework.web.bind.annotation.{GetMapping, RequestParam, RestController}
 
+import java.util.UUID
+
 @RestController
 private class EchoController {
 
@@ -13,5 +15,10 @@ private class EchoController {
 
   @GetMapping(Array("echo"))
   def echo(@RequestParam("msg") msg: String): String = echoService.echo(msg)
+
+  @GetMapping(Array("broken"))
+  def broken(): Unit = {
+    echoService.brokenEcho(UUID.randomUUID().toString)
+  }
 
 }
