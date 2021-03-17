@@ -11,6 +11,7 @@
 *.asc
 *.war
 *.zip
+*.tgz
 *.ear
 hs_err_pid*
 
@@ -33,3 +34,4 @@ hs_err_pid*
 # temporary files
 # --------------------------------------
 target/
+release/
