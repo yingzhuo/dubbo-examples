@@ -2,18 +2,26 @@
 version := 1.0.0-$(shell /bin/date '+%Y%m%d%H%M%S')
 
 usage:
-	@echo "usage          : 菜单"
-	@echo "dist           : 构建"
-	@echo "clean          : 清理"
-	@echo "version        : 变更版本号"
-	@echo "github         : 推送源码"
+	@echo "usage                : 菜单"
+	@echo "release-jar          : 构建"
+	@echo "release-docker-image : 构建"
+	@echo "clean                : 清理"
+	@echo "version              : 变更版本号"
+	@echo "github               : 推送源码"
 
-release: clean
-	@mvn package -P"dist" -D"version=$(version)"
+release-jar: clean
+	@mvn -f $(CURDIR)/pom.xml package -P"dist" -D"version=$(version)"
+
+release-docker-image: clean
+	@mvn -f $(CURDIR)/pom.xml package -P"docker" -D"version=$(version)"
+	@docker image build --tag yingzhuo/de-consumer:lastest $(CURDIR)/de-consumer/target/docker-context/
+	@docker image build --tag yingzhuo/de-producer:lastest $(CURDIR)/de-producer/target/docker-context/
 
 clean:
-	@mvn clean -q
+	@mvn -f $(CURDIR)/pom.xml clean -q
 	@rm -rf $(CURDIR)/release
+	@docker image rm yingzhuo/de-consumer:lastest &> /dev/null || true
+	@docker image rm yingzhuo/de-producer:lastest &> /dev/null || true
 
 version:
 	@mvn -f $(CURDIR)/pom.xml versions:set
@@ -22,8 +30,9 @@ version:
 
 github: clean
 	@cd $(CURDIR)
+	@git status
 	@git add .
 	@git commit -m "$(shell /bin/date "+%F %T")"
 	@git push
 
-.PHONY: usage release clean version github
+.PHONY: usage release-jar release-docker-image clean version github
