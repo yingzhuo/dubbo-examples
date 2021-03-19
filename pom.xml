@@ -45,8 +45,8 @@
         <scala.version>2.13.5</scala.version>
 
         <!-- framework -->
-        <spring.boot.version>2.4.3</spring.boot.version>
-        <spring.version>5.3.4</spring.version>
+        <spring.boot.version>2.4.4</spring.boot.version>
+        <spring.version>5.3.5</spring.version>
         <jackson.version>2.12.2</jackson.version>
         <slf4j.version>1.7.30</slf4j.version>
         <netty.version>4.1.60.Final</netty.version>
@@ -77,11 +77,6 @@
             <dependency>
                 <groupId>com.github.yingzhuo</groupId>
                 <artifactId>de-common</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.yingzhuo</groupId>
-                <artifactId>de-service</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -325,6 +320,11 @@
             <dependency>
                 <groupId>com.fasterxml.jackson.module</groupId>
                 <artifactId>jackson-module-kotlin</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.module</groupId>
+                <artifactId>jackson-module-scala_2.13</artifactId>
                 <version>${jackson.version}</version>
             </dependency>
             <dependency>
