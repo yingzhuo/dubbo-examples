@@ -1,3 +1,6 @@
+# ----------------------------------------------------------------------------------------------------------------------
+# Dubbo配置
+# ----------------------------------------------------------------------------------------------------------------------
 dubbo:
   application:
     name: "${spring.application.name}"
@@ -6,6 +9,10 @@ dubbo:
   registry:
     protocol: "zookeeper"
     address: "127.0.0.1:2181"
+    check: true
   config-center:
     address: "127.0.0.1:2181"
+    check: true
+  consumer:
     check: false
+    timeout: 1500
