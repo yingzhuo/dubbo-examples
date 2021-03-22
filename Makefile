@@ -1,4 +1,3 @@
-# 版本号
 version := 1.0.0-$(shell /bin/date '+%Y%m%d%H%M%S')
 
 usage:
@@ -32,5 +31,6 @@ github: clean
 	@cd $(CURDIR)
 	@git add .
 	@git commit -m "$(shell /bin/date "+%F %T")"
+	@git push
 
 .PHONY: usage release-jar release-docker-image clean version github

@@ -10,7 +10,7 @@ import java.util.UUID
 @RestController
 private class EchoController {
 
-  @DubboReference(version = Version.Random, check = false, stub = "de.consumer.stub.EchoServiceStub")
+  @DubboReference(version = Version.Random, check = false, stub = "de.consumer.stub.EchoServiceStub", loadbalance = "random")
   private val echoService: EchoService = null
 
   @GetMapping(Array("echo"))
