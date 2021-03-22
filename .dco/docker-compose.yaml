@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  zk:
+    image: "zookeeper:3.6.2"
+    container_name: "zookeeper"
+    restart: "always"
+  producer:
+    image: "yingzhuo/de-producer:latest"
+    container_name: "de-producer"
+    restart: "always"
+    links:
+      - "zk:zk"
+    ports:
+      - "8888:8888"
+    command:
+      - "--spring.profiles.active=dco"
+  consumer:
+    image: "yingzhuo/de-consumer:latest"
+    container_name: "de-consumer"
+    restart: "always"
+    links:
+      - "zk:zk"
+    ports:
+      - "7777:7777"
+    command:
+      - "--spring.profiles.active=dco"

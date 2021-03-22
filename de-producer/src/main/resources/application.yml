@@ -7,8 +7,6 @@ spring:
   profiles:
     active:
       - dev
-    include:
-      - dubbo
   aop:
     auto: true
   main:

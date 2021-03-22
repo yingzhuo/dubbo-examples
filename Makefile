@@ -14,14 +14,14 @@ release-jar: clean
 
 release-docker-image: clean
 	@mvn -f $(CURDIR)/pom.xml package -P"docker" -D"version=$(version)"
-	@docker image build --tag yingzhuo/de-consumer:lastest $(CURDIR)/de-consumer/target/docker-context/
-	@docker image build --tag yingzhuo/de-producer:lastest $(CURDIR)/de-producer/target/docker-context/
+	@docker image build --tag yingzhuo/de-consumer:latest $(CURDIR)/de-consumer/target/docker-context/
+	@docker image build --tag yingzhuo/de-producer:latest $(CURDIR)/de-producer/target/docker-context/
 
 clean:
 	@mvn -f $(CURDIR)/pom.xml clean -q
 	@rm -rf $(CURDIR)/release
-	@docker image rm yingzhuo/de-consumer:lastest &> /dev/null || true
-	@docker image rm yingzhuo/de-producer:lastest &> /dev/null || true
+	@docker image rm yingzhuo/de-consumer:latest &> /dev/null || true
+	@docker image rm yingzhuo/de-producer:latest &> /dev/null || true
 
 version:
 	@mvn -f $(CURDIR)/pom.xml versions:set

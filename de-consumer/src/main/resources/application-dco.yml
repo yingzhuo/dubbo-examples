@@ -6,15 +6,13 @@ dubbo:
     name: "${spring.application.name}"
     parameters:
       "qos.enable": false
-  protocol:
-    name: "dubbo"
-    port: "20880"
   registry:
     protocol: "zookeeper"
-    address: "127.0.0.1:2181"
+    address: "zk:2181"
     check: true
   config-center:
-    address: "127.0.0.1:2181"
+    address: "zk:2181"
     check: true
-  provider:
+  consumer:
+    check: false
     timeout: 1500
