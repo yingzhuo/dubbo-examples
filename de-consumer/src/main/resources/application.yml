@@ -16,6 +16,8 @@ spring:
     banner-mode: log
     allow-bean-definition-overriding: true
     lazy-initialization: false
+    sources:
+      - "classpath*:/META-INF/spring-*.xml"
   banner:
     location: banner.txt
   jackson:
