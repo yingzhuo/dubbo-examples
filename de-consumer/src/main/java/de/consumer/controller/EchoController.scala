@@ -1,7 +1,7 @@
 package de.consumer.controller
 
 import de.service.EchoService
-import de.service.version.Version.Default
+import de.service.version.Version
 import org.apache.dubbo.config.annotation.DubboReference
 import org.springframework.web.bind.annotation.{GetMapping, RequestParam, RestController}
 
@@ -10,7 +10,7 @@ import java.util.UUID
 @RestController
 private class EchoController {
 
-  @DubboReference(version = Default, check = false)
+  @DubboReference(version = Version.Random, check = false)
   private val echoService: EchoService = null
 
   @GetMapping(Array("echo"))

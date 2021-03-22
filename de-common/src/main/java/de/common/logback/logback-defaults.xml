@@ -21,6 +21,7 @@
     <logger name="org.apache.dubbo" additivity="true" level="warn"/>
     <logger name="com.alibaba.spring" additivity="true" level="warn"/>
     <logger name="io.netty" additivity="true" level="warn"/>
+    <logger name="_org.springframework.web.servlet.HandlerMapping.Mappings" additivity="true" level="info"/>
 
     <root level="debug">
         <appender-ref ref="STDOUT"/>
