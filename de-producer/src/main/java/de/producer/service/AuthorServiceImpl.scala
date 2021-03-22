@@ -5,7 +5,7 @@ import de.service.AuthorService
 import de.service.version.Version
 import org.apache.dubbo.config.annotation.DubboService
 
-@DubboService(version = Version.Default)
+@DubboService(version = Version.Random)
 class AuthorServiceImpl extends AnyRef with AuthorService {
 
   override def get: Author = Author("应卓", "yingzhor@gmail.com")

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.{GetMapping, RestController}
 @RestController
 private class AuthorController {
 
-  @DubboReference(version = Version.Default, check = false)
+  @DubboReference(version = Version.Random, check = false, stub = "de.consumer.stub.AuthorServiceStub")
   private val authorService: AuthorService = null
 
   @GetMapping(Array("author"))
